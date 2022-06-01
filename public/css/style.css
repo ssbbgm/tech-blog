@@ -3,7 +3,7 @@
 /*******************************************/
 
 /* Box Model Hack */
-*{
+* {
     box-sizing: border-box;
     background-color: lightblue;
 }
@@ -22,34 +22,38 @@ img {
 /*******************************************/
 
 nav {
-    height: 100px;
+    height: 140px;
     margin-bottom: 20px;
-    /* background-color: #333; */
+    background-color: black;
 }
 
 nav h1 {
     padding: 10px 20px;
-    border: 1px solid red;
+    margin: 30px;
     display: inline;
+    border: 5px solid;
     border-radius: 20px;
+    box-shadow: 3px 5px lightblue;
 }
 
 ul {
     list-style-type: none;
-    margin: 0;
+    margin: 15px;
     padding: 0;
     padding-bottom: 5px;
     overflow: hidden;
-    /* background-color: #333; */
+    display: flex;
+    background-color: black;
+}
+
+li {
+    background-color: black;
 }
   
-li {
-    float: left;
-}
   
 li a {
     display: block;
-    /* color: white; */
+    color: lightblue;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -63,5 +67,34 @@ li a:hover {
 section {
     border: 2px solid black;
     width: 90%;
-    margin: 0 auto;
+    margin: 50px auto;
 }
+
+
+.blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-right: 10px;
+    margin-left: 10px; */
+    background-color: black;
+    overflow: hidden;
+}
+
+.blog-header h2 {
+    margin-left: 10px;
+    background-color: black;
+    color: lightblue;
+}
+
+.blog-header p {
+    margin-right: 10px;
+    background-color: black;
+    color: lightblue;
+}
+
+
+section > p {
+    margin: 10px
+}
+
