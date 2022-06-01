@@ -18,6 +18,7 @@ img {
 
 nav {
     height: 140px;
+    margin-top: -15px;
     background-color: black;
 }
 
@@ -40,6 +41,7 @@ ul {
 
 li {
     background-color: black;
+    font-size: 22px;
 }
   
   
@@ -56,12 +58,24 @@ li a:hover {
     background-color: #111;
 }
 
-section {
+section, .form {
     border: 2px solid black;
     width: 90%;
     margin: 50px auto;
 }
 
+.form label, .form input, .form textarea, .form button{
+   margin-left: 20px;
+   margin-right: 20px;
+   margin-bottom: 15px;
+   width: 1650px;
+}
+
+#post-submit, #post-create {
+    padding: 5px;
+    background-color: black;
+    color: lightblue;
+}
 
 .blog-header {
     display: flex;
@@ -86,6 +100,10 @@ section {
 
 section > p {
     margin: 10px
+}
+
+p, button, input {
+    font-size: 22px;
 }
   
 /******************************************

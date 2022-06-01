@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Tech Blog</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Login</a></li>
+                <li><a href="">Logout</a></li>
+            </ul>
+            <h1>Your Dashboard</h1>
+        </nav>
+    </header>
+    <div class="form">
+        <form> 
+            <div class="blog-header">
+                <h2>Create New Post</h2>
+            </div>
+            <p><label for="post-title">Title</label></p>
+            <input type="text" id="post-title"><br>
+            <p><label for="post-content">Content</p>
+            <textarea name="post-content" id="post-content" cols="30" rows="10"></textarea><br>
+            <input id="post-submit" type="submit" value= "Create">
+        </form>
+
+        <button id="post-create">+ NEW POST</button>
+    </div>
+</body>
+</html>
