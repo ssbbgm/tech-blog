@@ -7,7 +7,7 @@
     box-sizing: border-box;
     background-color: lightblue;
 }
-  
+
 /******************************************
 /* LAYOUT
 /*******************************************/
@@ -15,15 +15,9 @@ img {
     display: block;
     margin: 0 auto;
 }
-  
-  
-/******************************************
-/* ADDITIONAL STYLES
-/*******************************************/
 
 nav {
     height: 140px;
-    margin-bottom: 20px;
     background-color: black;
 }
 
@@ -40,8 +34,6 @@ ul {
     list-style-type: none;
     margin: 15px;
     padding: 0;
-    padding-bottom: 5px;
-    overflow: hidden;
     display: flex;
     background-color: black;
 }
@@ -75,8 +67,6 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-right: 10px;
-    margin-left: 10px; */
     background-color: black;
     overflow: hidden;
 }
@@ -97,4 +87,10 @@ section {
 section > p {
     margin: 10px
 }
+  
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+
 
