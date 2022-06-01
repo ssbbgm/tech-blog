@@ -4,8 +4,8 @@ const sequelize = require('../config/connection');
 class Blog extends Model {}
 
 Blog.init(
-    {
-    id: {
+  {
+    blog_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -26,8 +26,21 @@ Blog.init(
             key: 'username',
         },
     },
+    comment_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'comment',
+            key: 'comment_id',
+        },
     }, 
-    {timestamps: true}
+  },
+    {
+        sequelize,
+        freezeTableName: true,
+        timestamps: true,
+        modelName: 'blog'
+    },
+    
     );
 
 module.exports = Blog;
