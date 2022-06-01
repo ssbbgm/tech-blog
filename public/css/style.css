@@ -65,17 +65,22 @@ section, .form {
     margin: 50px auto;
 }
 
-.form label, .form input, .form textarea, .form button{
+.form label, .form input, .form textarea, .form button, .form p{
    margin-left: 20px;
    margin-right: 20px;
    margin-bottom: 15px;
    width: 1650px;
 }
 
-#post-submit, #post-create {
+#post-submit, #post-create, #login-submit, #signup-submit {
     padding: 5px;
     background-color: black;
     color: lightblue;
+    height: 45px;
+}
+
+input{
+    height: 45px;
 }
 
 #post-create{
@@ -105,13 +110,14 @@ section, .form {
 
 
 section > p {
-    margin: 10px
+    margin: 10px;
 }
 
 p, button, input {
     font-size: 22px;
 }
-  
+
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
