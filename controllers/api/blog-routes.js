@@ -6,7 +6,7 @@ const withAuth = require('../../utils/auth');
 router.get('/', (req, res) => {
     console.log('======================');
 Blog.findAll({
-            attributes: ['id',
+            attributes: ['blog_id',
                 'title',
                 'body',
                 'created_at'
@@ -20,7 +20,7 @@ Blog.findAll({
                 },
                 {
                     model: Comment,
-                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['comment_id', 'body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -41,7 +41,7 @@ router.get('/:id', (req, res) => {
                 id: req.params.id
             },
             attributes: [
-                'id',
+                'blog_id',
                 'body',
                 'title',
                 'created_at'
@@ -92,7 +92,7 @@ router.put('/:id', withAuth, (req, res) => {
             content: req.body.body
         }, {
             where: {
-                id: req.params.id
+                id: req.params.blog_id
             }
         }).then(blogData => {
             if (!blogData) {
@@ -109,7 +109,7 @@ router.put('/:id', withAuth, (req, res) => {
 router.delete('/:id', withAuth, (req, res) => {
     Blog.destroy({
         where: {
-            id: req.params.id
+            id: req.params.blog_id
         }
     }).then(blogData => {
         if (!blogData) {

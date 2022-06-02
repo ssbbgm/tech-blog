@@ -29,6 +29,7 @@ router.get('/', (req, res) => {
             res.render('homepage', { blogs, loggedIn: req.session.loggedIn });
         })
         .catch(err => {
+            
             console.log(err);
             res.status(500).json(err);
         });

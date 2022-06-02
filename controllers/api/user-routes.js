@@ -93,7 +93,7 @@ router.post('/login', (req, res) => {
             }
             req.session.save(() => {
 
-                req.session.user_id = userData.id;
+                req.session.user_id = userData.user_id;
                 req.session.username = userData.username;
                 req.session.loggedIn = true;
 
@@ -121,7 +121,7 @@ router.put('/:id', (req, res) => {
     User.update(req.body, {
             individualHooks: true,
             where: {
-                id: req.params.id
+                user_id: req.params.user_id
             }
         })
         .then(userData => {
@@ -141,7 +141,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     User.destroy({
             where: {
-                id: req.params.id
+                id: req.params.user_id
             }
         })
         .then(userData => {

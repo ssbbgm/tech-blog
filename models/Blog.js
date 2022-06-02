@@ -5,7 +5,7 @@ class Blog extends Model {}
 
 Blog.init(
   {
-    id: {
+    blog_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -19,7 +19,7 @@ Blog.init(
         field: 'created_at',
         type: DataTypes.DATEONLY,
     },
-    body: {
+    blog_body: {
         type: DataTypes.STRING,
         required: true,
     },
@@ -29,6 +29,14 @@ Blog.init(
             model: 'User',
             key: 'username',
         },
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'user',
+            key: 'id'
+        }
     },
     comment_id: {
         type: DataTypes.INTEGER,
