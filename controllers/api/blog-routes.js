@@ -76,7 +76,7 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
     Blog.create({
             title: req.body.title,
-            content: req.body.blog_body,
+            content: req.body.body,
             user_id: req.session.user_id
         })
         .then(blogData => res.json(blogData))
@@ -89,7 +89,7 @@ router.post('/', withAuth, (req, res) => {
 router.put('/:id', withAuth, (req, res) => {
     Blog.update({
             title: req.body.title,
-            content: req.body.blog_body
+            content: req.body.body
         }, {
             where: {
                 id: req.params.id
@@ -106,6 +106,7 @@ router.put('/:id', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
+
 router.delete('/:id', withAuth, (req, res) => {
     Blog.destroy({
         where: {
@@ -122,6 +123,7 @@ router.delete('/:id', withAuth, (req, res) => {
         res.status(500).json(err);
     });
 });
+
 
 module.exports = router;
 

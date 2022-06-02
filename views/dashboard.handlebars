@@ -1,17 +1,19 @@
-{{#if blogs.length}}
+{{#if loggedIn}}
 <div class="form">
         <form> 
             <div class="blog-header">
-                <h2>Your Posts</h2>
+                <h2>Your Blogs</h2>
             </div>
             {{#each blogs as |blog|}}
             {{> dashboard-bloginfo blog}}
             {{/each}}
         </form>
 </div>
-<button id="post-create"><a href="/dashboard/new">+ New Post</a></button>
+<button id="blog-create"><a href="/add-blog">+ New Blog</a></button>
+{{else}}
+<a href="/login">You must login first to view this page</a>
 {{/if}}
 
 
 
-<script src="/js/add-post.js"></script>
+<script src="/js/add-blog.js"></script>

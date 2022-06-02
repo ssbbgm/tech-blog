@@ -16,8 +16,8 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/dashboard">Dashboard</a></li>
                 {{#if loggedIn}}
+                <li><a href="/dashboard">Dashboard</a></li>
                 <li><a href="/logout">Logout</a></li>
                 {{else}}
                 <li><a href="/login">Login</a></li>
@@ -26,9 +26,9 @@
             <h1>The Tech Blog</h1>
         </nav>
     </header>
-        
+        <main>
         {{{ body }}}
-
+        </main>
     {{#if loggedIn}}
     <script src="/js/logout.js"></script>
     {{/if}}
