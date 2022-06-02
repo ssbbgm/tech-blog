@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 Blog.findAll({
             attributes: ['blog_id',
                 'title',
-                'body',
+                'blog_body',
                 'created_at'
             ],
             order: [
@@ -20,7 +20,7 @@ Blog.findAll({
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_id', 'body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['comment_id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -38,11 +38,11 @@ Blog.findAll({
 router.get('/:id', (req, res) => {
     Blog.findOne({
             where: {
-                id: req.params.id
+                id: req.params.blog_id
             },
             attributes: [
                 'blog_id',
-                'body',
+                'blog_body',
                 'title',
                 'created_at'
             ],
@@ -52,7 +52,7 @@ router.get('/:id', (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -76,7 +76,7 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
     Blog.create({
             title: req.body.title,
-            content: req.body.body,
+            content: req.body.blog_body,
             user_id: req.session.user_id
         })
         .then(blogData => res.json(blogData))
@@ -89,7 +89,7 @@ router.post('/', withAuth, (req, res) => {
 router.put('/:id', withAuth, (req, res) => {
     Blog.update({
             title: req.body.title,
-            content: req.body.body
+            content: req.body.blog_body
         }, {
             where: {
                 id: req.params.blog_id

@@ -17,21 +17,21 @@ router.get('/:id', (req, res) => {
     User.findOne({
             attributes: { exclude: ['password'] },
             where: {
-                id: req.params.id
+                id: req.params.user_id
             },
             include: [{
                     model: Blog,
                     attributes: [
-                        'id',
+                        'blog_id',
                         'title',
-                        'body',
+                        'blog_body',
                         'created_at'
                     ]
                 },
 
                 {
                     model: Comment,
-                    attributes: ['id', 'body', 'created_at'],
+                    attributes: ['comment_id', 'comment_body', 'created_at'],
                     include: {
                         model: Blog,
                         attributes: ['title']

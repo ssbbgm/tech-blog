@@ -5,14 +5,14 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
     Blog.findAll({
             attributes: [
-                'id',
+                'blog_id',
                 'title',
-                'body',
+                'blog_body',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['comment_id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -50,17 +50,17 @@ router.get('/signup', (req, res) => {
 router.get('/blog/:id', (req, res) => {
     Blog.findOne({
             where: {
-                id: req.params.id
+                id: req.params.blog_id
             },
             attributes: [
-                'id',
-                'content',
+                'blog_id',
+                'blog_body',
                 'title',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['comment_id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -91,17 +91,17 @@ router.get('/blog/:id', (req, res) => {
 router.get('/blog-comments', (req, res) => {
     Blog.findOne({
             where: {
-                id: req.params.id
+                id: req.params.blog_id
             },
             attributes: [
-                'id',
-                'body',
+                'blog_id',
+                'blog_body',
                 'title',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['id', 'body', 'post_id', 'user_id', 'created_at'],
+                    attributes: ['comment_id', 'comment_body', 'post_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']

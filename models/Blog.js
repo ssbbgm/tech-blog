@@ -15,13 +15,13 @@ Blog.init(
         type: DataTypes.STRING, 
         required: true,
     },
-    created_at: {
-        field: 'created_at',
-        type: DataTypes.DATEONLY,
-    },
     blog_body: {
         type: DataTypes.STRING,
         required: true,
+    },
+    created_at: {
+        field: 'created_at',
+        type: DataTypes.DATEONLY,
     },
     username: {
         type: DataTypes.STRING,
