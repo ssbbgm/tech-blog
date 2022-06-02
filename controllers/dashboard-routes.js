@@ -10,14 +10,14 @@ router.get('/', withAuth, (req, res) => {
                 blog_id: req.session.blog_id
             },
             attributes: [
-                'blog_id',
+                'id',
                 'title',
                 'blog_body',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['comment_id', 'blog_body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'blog_body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -44,7 +44,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
                 id: req.params.blog_id
             },
             attributes: 
-                ['blog_id',
+                ['id',
                 'title',
                 'blog_body',
                 'created_at'
@@ -55,7 +55,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']

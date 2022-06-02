@@ -17,12 +17,12 @@ router.get('/:id', (req, res) => {
     User.findOne({
             attributes: { exclude: ['password'] },
             where: {
-                id: req.params.user_id
+                id: req.params.id
             },
             include: [{
                     model: Blog,
                     attributes: [
-                        'blog_id',
+                        'id',
                         'title',
                         'blog_body',
                         'created_at'
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 
                 {
                     model: Comment,
-                    attributes: ['comment_id', 'comment_body', 'created_at'],
+                    attributes: ['id', 'comment_body', 'created_at'],
                     include: {
                         model: Blog,
                         attributes: ['title']
@@ -121,7 +121,7 @@ router.put('/:id', (req, res) => {
     User.update(req.body, {
             individualHooks: true,
             where: {
-                user_id: req.params.user_id
+                user_id: req.params.id
             }
         })
         .then(userData => {
@@ -141,7 +141,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     User.destroy({
             where: {
-                id: req.params.user_id
+                id: req.params.id
             }
         })
         .then(userData => {

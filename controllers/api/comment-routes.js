@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Comment.findAll({
             where: {
-                id: req.params.comment_id
+                id: req.params.id
             }
         })
         .then(commentData => res.json(commentData))
@@ -28,7 +28,7 @@ router.post('/', withAuth, (req, res) => {
     if (req.session) {
         Comment.create({
                 body: req.body.comment_body,
-                blog_id: req.body.blog_id,
+                blog_id: req.body.id,
                 user_id: req.session.user_id,
             })
             .then(commentData => res.json(commentData))
@@ -44,7 +44,7 @@ router.put('/:id', withAuth, (req, res) => {
         body: req.body.comment_body
     }, {
         where: {
-            id: req.params.comment_id
+            id: req.params.id
         }
     }).then(commentData => {
         if (!commentData) {
@@ -61,7 +61,7 @@ router.put('/:id', withAuth, (req, res) => {
 router.delete('/:id', withAuth, (req, res) => {
     Comment.destroy({
         where: {
-            id: req.params.comment_id
+            id: req.params.id
         }
     }).then(commentData => {
         if (!commentData) {

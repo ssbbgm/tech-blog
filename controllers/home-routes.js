@@ -5,14 +5,14 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
     Blog.findAll({
             attributes: [
-                'blog_id',
+                'id',
                 'title',
                 'blog_body',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['comment_id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -53,7 +53,7 @@ router.get('/blog/:id', (req, res) => {
                 id: req.params.blog_id
             },
             attributes: [
-                'blog_id',
+                'id',
                 'blog_body',
                 'title',
                 'created_at'
@@ -91,17 +91,17 @@ router.get('/blog/:id', (req, res) => {
 router.get('/blog-comments', (req, res) => {
     Blog.findOne({
             where: {
-                id: req.params.blog_id
+                id: req.params.id
             },
             attributes: [
-                'blog_id',
+                'id',
                 'blog_body',
                 'title',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['comment_id', 'comment_body', 'post_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'comment_body', 'post_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
