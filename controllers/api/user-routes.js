@@ -56,27 +56,23 @@ router.get('/:id', (req, res) => {
         });
 });
 
-
-router.post('/', (req, res) => {
-
-    User.create({
+// Create New User 
+router.post('/', async (req, res) => {
+    try {
+      const userData = await User.create({
         username: req.body.username,
-        password: req.body.password
-    })
-
-    .then(userData => {
-            req.session.save(() => {
-                req.session.user_id = userData.id;
-                req.session.username = userData.username;
-                req.session.loggedIn = true;
-
-                res.json(userData);
-            });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+        password: req.body.password,
+      });
+  
+      req.session.save(() => {
+        req.session.loggedIn = true;
+  
+        res.status(200).json(userData);
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
 });
 
 router.post('/login', (req, res) => {

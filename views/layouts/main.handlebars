@@ -17,10 +17,10 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/dashboard">Dashboard</a></li>
-                {{#if loggedOut}}
-                <li><a href="/login">Login</a></li>
-                {{else}}
+                {{#if loggedIn}}
                 <li><a href="/logout">Logout</a></li>
+                {{else}}
+                <li><a href="/login">Login</a></li>
                 {{/if}}
             </ul>
             <h1>The Tech Blog</h1>

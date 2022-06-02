@@ -25,8 +25,8 @@ router.get('/', (req, res) => {
             ]
         })
         .then(blogData => {
-            const posts = blogData.map(blog => blog.get({ plain: true }));
-            res.render('homepage', { blogs, loggedIn: req.session.loggedIn });
+            const blogs = blogData.map(blog => blog.get({ plain: true }));
+            res.render('homepage', { blogs,  });
         })
         .catch(err => {
             console.log(err);
