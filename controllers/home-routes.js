@@ -7,12 +7,12 @@ router.get('/', (req, res) => {
             attributes: [
                 'id',
                 'title',
-                'blog_body',
+                'body',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -50,17 +50,17 @@ router.get('/signup', (req, res) => {
 router.get('/blog/:id', (req, res) => {
     Blog.findOne({
             where: {
-                id: req.params.blog_id
+                id: req.params.id
             },
             attributes: [
                 'id',
-                'blog_body',
+                'body',
                 'title',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['comment_id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -95,13 +95,13 @@ router.get('/blog-comments', (req, res) => {
             },
             attributes: [
                 'id',
-                'blog_body',
+                'body',
                 'title',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['id', 'comment_body', 'post_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'body', 'post_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']

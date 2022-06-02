@@ -24,14 +24,14 @@ router.get('/:id', (req, res) => {
                     attributes: [
                         'id',
                         'title',
-                        'blog_body',
+                        'body',
                         'created_at'
                     ]
                 },
 
                 {
                     model: Comment,
-                    attributes: ['id', 'comment_body', 'created_at'],
+                    attributes: ['id', 'body', 'created_at'],
                     include: {
                         model: Blog,
                         attributes: ['title']
@@ -93,7 +93,7 @@ router.post('/login', (req, res) => {
             }
             req.session.save(() => {
 
-                req.session.user_id = userData.user_id;
+                req.session.id = userData.id;
                 req.session.username = userData.username;
                 req.session.loggedIn = true;
 

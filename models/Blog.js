@@ -15,7 +15,7 @@ Blog.init(
         type: DataTypes.STRING, 
         required: true,
     },
-    blog_body: {
+    body: {
         type: DataTypes.STRING,
         required: true,
     },

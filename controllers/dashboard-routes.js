@@ -7,17 +7,17 @@ const withAuth = require('../utils/auth');
 router.get('/', withAuth, (req, res) => {
     Blog.findAll({
             where: {
-                blog_id: req.session.blog_id
+                id: req.session.id
             },
             attributes: [
                 'id',
                 'title',
-                'blog_body',
+                'body',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['id', 'blog_body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -41,12 +41,12 @@ router.get('/', withAuth, (req, res) => {
 router.get('/edit/:id', withAuth, (req, res) => {
     Blog.findOne({
             where: {
-                id: req.params.blog_id
+                id: req.params.id
             },
             attributes: 
                 ['id',
                 'title',
-                'blog_body',
+                'body',
                 'created_at'
             ],
             include: [{
@@ -55,7 +55,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']

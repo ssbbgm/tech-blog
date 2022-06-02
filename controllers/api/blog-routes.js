@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 Blog.findAll({
             attributes: ['id',
                 'title',
-                'blog_body',
+                'body',
                 'created_at'
             ],
             order: [
@@ -20,7 +20,7 @@ Blog.findAll({
                 },
                 {
                     model: Comment,
-                    attributes: ['id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -38,11 +38,11 @@ Blog.findAll({
 router.get('/:id', (req, res) => {
     Blog.findOne({
             where: {
-                id: req.params.blog_id
+                id: req.params.id
             },
             attributes: [
                 'id',
-                'blog_body',
+                'body',
                 'title',
                 'created_at'
             ],
@@ -52,7 +52,7 @@ router.get('/:id', (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['id', 'comment_body', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
