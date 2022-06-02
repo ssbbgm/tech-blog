@@ -69,7 +69,7 @@ section, .form {
    margin-left: 20px;
    margin-right: 20px;
    margin-bottom: 15px;
-   width: 1650px;
+   width: 80vw;
 }
 
 #post-submit, #post-create, #login-submit, #signup-submit {
