@@ -1,0 +1,16 @@
+<div class="form" >
+        <form id="edit-blog-form"> 
+            <div class="blog-header">
+                <h2>Edit Post</h2>
+            </div>
+            <p>Title</label></p>
+            <input type="text" id="blog-title" value="{{blog.title}}"><br>
+            <p>Content</p>
+            <textarea name="blog-content" id="blog-content" cols="30" rows="10" value="{{blog.body}}"></textarea><br>
+            <input id="blog-edit-submit" type="submit" value= "Update Blog">
+            <input id="blog-delete-submit" type="button" value= "Delete Blog">
+        </form>
+</div>
+
+<script src="/js/edit-blog.js"></script>
+<script src="/js/delete-blog.js"></script>
