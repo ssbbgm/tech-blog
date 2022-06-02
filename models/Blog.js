@@ -33,11 +33,14 @@ Blog.init(
             key: 'id',
         },
     }, 
+    createdAt: {
+        field: 'created_at',
+        type: DataTypes.DATEONLY,
+    }
   },
     {
         sequelize,
         freezeTableName: true,
-        timestamps: true,
         modelName: 'blog'
     },
     
