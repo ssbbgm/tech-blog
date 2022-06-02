@@ -16,6 +16,11 @@ Comment.init(
         allowNull: false
         },
 
+        createdAt: {
+            field: 'created_at',
+            type: DataTypes.DATEONLY,
+        },
+
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -33,10 +38,6 @@ Comment.init(
                 key: 'id'
             }
         },
-        createdAt: {
-            field: 'created_at',
-            type: DataTypes.DATEONLY,
-        }
     },
     {
      sequelize,

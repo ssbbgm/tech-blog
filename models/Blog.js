@@ -15,6 +15,10 @@ Blog.init(
         type: DataTypes.STRING, 
         required: true,
     },
+    created_at: {
+        field: 'created_at',
+        type: DataTypes.DATEONLY,
+    },
     body: {
         type: DataTypes.STRING,
         required: true,
@@ -33,10 +37,6 @@ Blog.init(
             key: 'id',
         },
     }, 
-    createdAt: {
-        field: 'created_at',
-        type: DataTypes.DATEONLY,
-    }
   },
     {
         sequelize,
