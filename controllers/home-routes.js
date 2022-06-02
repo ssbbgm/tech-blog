@@ -59,7 +59,7 @@ router.get('/blog/:id', (req, res) => {
             ],
             include: [{
                     model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'comment_text', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -71,14 +71,14 @@ router.get('/blog/:id', (req, res) => {
                 }
             ]
         })
-        .then(dbPostData => {
-            if (!dbPostData) {
-                res.status(404).json({ message: 'No post found with this id' });
+        .then(blogData => {
+            if (!blogData) {
+                res.status(404).json({ message: 'No blog found with this id' });
                 return;
             }
-            const post = dbPostData.get({ plain: true });
-            console.log(post);
-            res.render('single-post', { post, loggedIn: req.session.loggedIn });
+            const blog = blogData.get({ plain: true });
+            console.log(blog);
+            res.render('single-blog', { blog, loggedIn: req.session.loggedIn });
 
 
         })
@@ -87,20 +87,20 @@ router.get('/blog/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
-router.get('/posts-comments', (req, res) => {
-    Post.findOne({
+router.get('/blog-comments', (req, res) => {
+    Blog.findOne({
             where: {
                 id: req.params.id
             },
             attributes: [
                 'id',
-                'content',
+                'body',
                 'title',
                 'created_at'
             ],
             include: [{
                     model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'body', 'post_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -112,14 +112,14 @@ router.get('/posts-comments', (req, res) => {
                 }
             ]
         })
-        .then(dbPostData => {
-            if (!dbPostData) {
-                res.status(404).json({ message: 'No post found with this id' });
+        .then(blogData => {
+            if (!blogData) {
+                res.status(404).json({ message: 'No blog found with this id' });
                 return;
             }
-            const post = dbPostData.get({ plain: true });
+            const blog = blogData.get({ plain: true });
 
-            res.render('posts-comments', { post, loggedIn: req.session.loggedIn });
+            res.render('blog-comments', { blog, loggedIn: req.session.loggedIn });
         })
         .catch(err => {
             console.log(err);

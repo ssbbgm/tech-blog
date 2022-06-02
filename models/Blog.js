@@ -30,7 +30,7 @@ Blog.init(
         type: DataTypes.INTEGER,
         references: {
             model: 'comment',
-            key: 'comment_id',
+            key: 'id',
         },
     }, 
   },
