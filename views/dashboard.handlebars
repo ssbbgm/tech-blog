@@ -1,0 +1,16 @@
+{{#if blogs.length}}
+<div class="form">
+        <form> 
+            <div class="blog-header">
+                <h2>Your Posts</h2>
+            </div>
+            {{#each blogs as |blog|}}
+            {{> dashboard-bloginfo post}}
+            {{/each}}
+        </form>
+</div>
+{{/if}}
+
+<button id="post-create"><a href="/dashboard/new">+ New Post</a></button>
+
+<script src="/javascript/add-post.js"></script>
