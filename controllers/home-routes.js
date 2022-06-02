@@ -5,7 +5,7 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
     Blog.findAll({
             attributes: [
-                'blog_id',
+                'id',
                 'title',
                 'body',
                 'created_at'
@@ -59,7 +59,7 @@ router.get('/blog/:id', (req, res) => {
             ],
             include: [{
                     model: Comment,
-                    attributes: ['id', 'comment_text', 'blog_id', 'user_id', 'created_at'],
+                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
