@@ -22,4 +22,4 @@ async function newFormHandler(event) {
     }
   };
   
-document.querySelector('#add-blog-form').addEventListener('blog-submit', newFormHandler);
+document.querySelector('#blog-submit').addEventListener('click', newFormHandler);

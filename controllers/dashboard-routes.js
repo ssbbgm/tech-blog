@@ -77,8 +77,49 @@ router.get('/edit/:id', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 })
-router.get('/new', (req, res) => {
-    res.render('new-blog');
+
+router.get('/post/:id', withAuth, (req, res) => {
+    Blog.findOne({
+            where: {
+                id: req.params.id
+            },
+            attributes: 
+                ['id',
+                'title',
+                'body',
+                'created_at'
+            ],
+            include: [{
+                    model: User,
+                    attributes: ['username']
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'body', 'blog_id', 'user_id', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+                }
+            ]
+        })
+        .then(blogData => {
+            if (!blogData) {
+                res.status(404).json({ message: 'No blog found with this id' });
+                return;
+            }
+
+            const blog = blogData.get({ plain: true });
+            res.render('single-blog', { blog, loggedIn: true });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+})
+
+router.get('/add-blog', (req, res) => {
+    res.render('add-blog');
 });
 
 
