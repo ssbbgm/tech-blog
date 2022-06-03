@@ -27,7 +27,7 @@ None
 To share information about technical topics
 
 ## Visuals
-![This is a screenshot/demo of the project.](Insert Picture or Link Info Here)
+![This is a screenshot/demo of the project.](./public/TechBlogScreenshot.png)
 
 ## Tests
 
