@@ -35,15 +35,6 @@ app.use(express.static('public'));
 
 app.use(routes);
 
-// sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
-// });
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
+});
